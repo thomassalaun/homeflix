@@ -19,7 +19,7 @@ On garde les fichiers 'ratings.csv' et 'movies_metadata.csv' qu'il faut glisser 
    - c'est le but du fichier create_sql.py
    - IMPORTANT : voir le fichier HELPME.md qui contient des instructions du prof à ce sujet
 
-# Ce qu'il faut faire : 
+# Ce qu'il faut faire ensuite : 
 
 - Faire une structure propre pour que tous les fichiers utilisés pour la data (.csv, .py, .db) soient au même endroit
 
@@ -29,4 +29,6 @@ On garde les fichiers 'ratings.csv' et 'movies_metadata.csv' qu'il faut glisser 
 
 - Merge les deux datasets de film (j'ai juste créé le programme merge_movies.py qui est vide)
    - la clé de jointure étant l'id du film 
-   - attention, beaucoup d'infos du dataset de Kaggle sont superflues et n'existe pas dans celui de TMDB, donc il faut **supprimer les colonnes superflues** avant 
+   - attention, beaucoup d'infos du dataset de Kaggle sont superflues et n'existe pas dans celui de TMDB, donc il faut **supprimer les colonnes superflues** avant
+ 
+- Le reste du projet....... (lol)
