@@ -3,7 +3,7 @@
 Le fichier CONSIGNES.md contient les consignes du prof telles que l'on les a reçues. Je note aussi le lien de son repo pour avoir le projet à l'état zéro : https://github.com/Elias-Hr/homeflix
 
 ## IL FAUT TELECHARGER L'ARCHIVE DE DATA SUR https://www.kaggle.com/datasets/rounakbanik/the-movies-dataset/ 
-On garde les fichiers 'ratings.csv' et 'movies_metadata' qu'il faut glisser dans le dossier 'data'.
+On garde les fichiers 'ratings.csv' et 'movies_metadata.csv' qu'il faut glisser dans le dossier 'data'.
 
 # Ce que j'ai fait :
 
