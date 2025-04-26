@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 services:
   homeflix-db:
     build:
@@ -43,7 +42,3 @@ volumes:
       o: bind
       type: none
       device: ${MOUNT_POINT}
-=======
-version: '3.8'
-
->>>>>>> 4221120636dd659af86242ef43fd8f5423755097
