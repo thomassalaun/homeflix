@@ -1,0 +1,12 @@
+FROM python:3.11-slim
+
+WORKDIR /app
+
+ADD database/load_data.py database/schema.py database/export_sql.py database/requirements.txt .
+
+# Installer DuckDB
+RUN pip install -r requirements.txt
+
+
+WORKDIR /
+CMD ["python", "/app/load_data.py"]

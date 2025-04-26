@@ -1,0 +1,10 @@
+FROM python:3.11-slim
+
+WORKDIR /app
+
+ADD frontend/app.py frontend/utils.py frontend/requirements.txt .
+
+# Installer DuckDB
+RUN pip install -r requirements.txt
+
+ENTRYPOINT ["streamlit", "run", "app.py", "--server.port=8501", "--server.address=0.0.0.0", "--server.headless=true"]

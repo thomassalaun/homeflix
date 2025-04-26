@@ -1,0 +1,13 @@
+FROM python:3.10.17-bullseye
+
+WORKDIR /app
+
+ADD backend/db_utils.py backend/main.py backend/recommender_chunk.py backend/requirements.txt .
+
+# Installer DuckDB
+RUN pip install -r requirements.txt
+
+
+WORKDIR /
+
+ENTRYPOINT ["fastapi", "run", "/app/main.py"]
