@@ -4,6 +4,8 @@ services:
       context: .
       dockerfile: Dockerfiles/Dockerfile.database
     container_name: homeflix-db
+    networks:
+        - homeflix-network
     volumes:
       - homeflix_data:/data
   homeflix-backend:
@@ -22,6 +24,8 @@ services:
       homeflix-db:
         condition: service_completed_successfully
     container_name: homeflix-backend
+    networks:
+        - homeflix-network
     volumes:
       - homeflix_data:/data
   homeflix-frontend:
@@ -34,6 +38,8 @@ services:
       homeflix-backend:
         condition: service_healthy
     container_name: homeflix-frontend
+    networks:
+        - homeflix-network
 
 volumes:
   homeflix_data:
@@ -42,3 +48,5 @@ volumes:
       o: bind
       type: none
       device: ${MOUNT_POINT}
+networks:
+    homeflix-network:
