@@ -1,6 +1,5 @@
 import pandas as pd
 import ast
-import os
 from duckdb import connect
 from sqlalchemy import create_engine, table, column
 from sqlalchemy.dialects.postgresql import insert
@@ -59,7 +58,7 @@ def load_data(db_path: str):
     print("📥 Données chargées avec succès.")
 
 if __name__ == '__main__':
-    db_path = os.getenv("PATH_DATA") + "/ma_base.duckdb"
+    db_path = "/data/ma_base.duckdb"
     create_database(db_path)
     load_data(db_path)
     export(db_path)

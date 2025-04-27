@@ -8,8 +8,6 @@ services:
         - homeflix-network
     volumes:
       - homeflix_data:/data
-    environment:
-        - PATH_DATA=${MOUNT_POINT}
   homeflix-backend:
     build:
       context: .
