@@ -84,6 +84,8 @@ Les graphiques interactifs sont créés avec **Plotly Express** pour un rendu dy
 ## Auteurs
 
 Thomas SALAÜN @thomassalaun
+
 Théo JUGEAU @the0jug0
+
 Sofia-Maitri BUDE @sofia-maitri
 
