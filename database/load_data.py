@@ -1,6 +1,7 @@
 import os
 import ast
 import pandas as pd
+import ast
 from duckdb import connect
 from sqlalchemy import create_engine, table, column
 from sqlalchemy.dialects.postgresql import insert
