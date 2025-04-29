@@ -1,6 +1,7 @@
 # Projet : Système de Recommandation de Films
 
-Ce projet implémente un système complet de recommandation de films utilisant des modèles de filtrage collaboratif. Il inclut un backend à l'aide de FastAPI, une base de données gérée avec DuckDB, et une interface utilisateur interactive construite avec Streamlit.
+Ce projet implémente un système complet de recommandation de films utilisant des modèles de filtrage collaboratif.\
+Il inclut un backend à l'aide de FastAPI, une base de données gérée avec DuckDB, et une interface utilisateur interactive construite avec Streamlit.
 
 ## Fonctionnalités Principales
 
@@ -36,9 +37,11 @@ Assurez-vous que Docker soit installé sur votre machine :
    cd homeflix
    ```
 2. **Préparation du jeux de données**
-   Les conteneurs vont utiliser un volume mappé sur un répertoire de la machine hôte.
-   Dans ce répertoire, nous copierons les fichier csv. A l'issue du démarrage des conteneurs, nous trouverons dans ce répertoire la base de données DuckDB,
-   ansi qu'un sous répertoire nommé **export** contenant le dup de la base de données, les scripts de création et de chargement des tables.
+
+   Les conteneurs vont utiliser un volume mappé sur un répertoire de la machine hôte.\
+   Dans ce répertoire, nous copierons les fichier csv. A l'issue du démarrage des conteneurs, nous trouverons dans ce répertoire:
+   - la base de données DuckDB
+   - un sous répertoire nommé **export** contenant le dump de la base de données, les scripts de création et de chargement des tables.
 
    Sous linux:
    ```bash
@@ -46,13 +49,13 @@ Assurez-vous que Docker soit installé sur votre machine :
       cp data/*.csv /tmp/mon_repertoire
    ```
 4. **Préparation du fichier d'environnement**   
-   Docker va utiliser ce fichier pour interpoler le contenu de la variable MOUNT_MOINT dans le fichier docker-compose.yml
+   Docker va utiliser ce fichier pour interpoler le contenu de la variable MOUNT_MOINT dans le fichier docker-compose.yml .\
    Créer un fichier demo.env dans le répertoire courant contenant :
     MOUNT_POINT=/tmp/mon_repertoire
 
 ---
 
-## Fonctionnement & Utilisation
+## Fonctionnement & utilisation
 
 ### 1. Fonctionnement
 
@@ -61,27 +64,31 @@ Dans le répertoire du projet homeflix, lancez la commande suivante :
 docker compose --env-file ./demo.env up 
 ```
 
-Docker va tout d'abord démarrer le conteneur **homeflix-db** qui est en charge de créer la base de données DuckDB, les tables, et charger les données depuis les fichiers csv.
-Docker démarrera le service homeflix-backend lorsque le conteneur **homeflix-db** aura terminé sa tâche.
-Docker démarrera le service homeflix-frontend lorsque le conteneur **homeflix-backend** répondra sur l'api /healthy
+Docker va tout d'abord démarrer le conteneur **homeflix-db** qui est en charge de créer la base de données DuckDB, les tables, et charger les données depuis les fichiers csv.\
+Ensuite, Docker démarrera le service homeflix-backend lorsque le conteneur **homeflix-db** aura terminé sa tâche.\
+Et enfin, Docker démarrera le service homeflix-frontend lorsque le conteneur **homeflix-backend** répondra sur l'api /healthy .
 
 ### 2. Utiliser l’interface utilisateur Streamlit
-Dans un navigateur accédez à l'interface via [http://localhost:8081](http://localhost:8081).
+Dans un navigateur ,accédez à l'interface via [http://localhost:8081](http://localhost:8081).
 
 ---
 
 ## Points Clés du Code
 
 ### 1. Généralités
-Dans le répertoire data, on trouve le données csv.
-Dans le répertoire database, on trouve les script permettant de créer la base de données, charger le données, et exporter les données.
-Dans le répertoire backend, on retrouve les scripts pour interroger la base de données, et exposer des apis pour le frontend.
-Dans le répertoire frontend, on retrourve les scripts pour l'interface homme machine.
-Dans le répertoire Dockerfiles, on retrouve les fichiers dockerfile pour créer les images des 3 services cités ci-dessus.
-Dans le répertoire racine, le fichier docker-compose qui ochestre les différents services, créer le volume et le réseau pour le fonctionnement des différents services.
+Dans le répertoire data: les données csv.\
 
-Les fichiers **requirements*.txt* ont été freezés pour installer les versions spécifiques des packages, 
-et non les dernières versions qui pourraient apparaitre et ne plus faire fonctionner le projet.
+Dans le répertoire database: les scripts permettant de créer la base de données, charger et exporter les données.\
+
+Dans le répertoire backend: les scripts pour interroger la base de données, et exposer des apis pour le service frontend.\
+
+Dans le répertoire frontend: les scripts pour l'interface homme machine.
+
+Dans le répertoire Dockerfiles: Les fichiers dockerfile pour créer les images des 3 services cités ci-dessus.
+
+Dans le répertoire racine, le fichier docker-compose qui crée , ochestre les différents services, crée le volume et le réseau pour le fonctionnement des différents services.
+
+Les fichiers **requirements*.txt* ont été freezés afin d'installer les versions spécifiques des packages, et non les dernières versions qui pourraient apparaitre et ne plus faire fonctionner le projet.
 
 ### 2. RecommenderChunkSystem
 Le système de recommandation utilise la bibliothèque **Surprise** pour construire un modèle SVD (Singular Value Decomposition) basé sur les évaluations utilisateur.
