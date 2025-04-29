@@ -69,18 +69,18 @@ Ensuite, Docker démarrera le service homeflix-backend lorsque le conteneur **ho
 Et enfin, Docker démarrera le service homeflix-frontend lorsque le conteneur **homeflix-backend** répondra sur l'api /healthy .
 
 ### 2. Utiliser l’interface utilisateur Streamlit
-Dans un navigateur ,accédez à l'interface via [http://localhost:8081](http://localhost:8081).
+Dans un navigateur, accédez à l'interface via [http://localhost:8081](http://localhost:8081).
 
 ---
 
 ## Points Clés du Code
 
 ### 1. Généralités
-Dans le répertoire data: les données csv.\
+Dans le répertoire data: les données csv.
 
-Dans le répertoire database: les scripts permettant de créer la base de données, charger et exporter les données.\
+Dans le répertoire database: les scripts permettant de créer la base de données, charger et exporter les données.
 
-Dans le répertoire backend: les scripts pour interroger la base de données, et exposer des apis pour le service frontend.\
+Dans le répertoire backend: les scripts pour interroger la base de données, et exposer des apis pour le service frontend.
 
 Dans le répertoire frontend: les scripts pour l'interface homme machine.
 
