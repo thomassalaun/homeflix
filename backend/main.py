@@ -1,14 +1,6 @@
 from fastapi import FastAPI, HTTPException
 from recommender_chunk import RecommenderChunkSystem
-from db_utils import (
-    get_movie, 
-    get_all_movies, 
-    get_movie_details, 
-    get_statistics, 
-    get_genre_distribution, 
-    get_ratings_chunk, 
-    get_ratings_user
-)
+from db_utils import get_movie, get_all_movies, get_movie_details, get_statistics, get_genre_distribution, get_ratings_chunk, get_ratings
 
 app = FastAPI(title="API de Recommandation de Films")
 
@@ -16,21 +8,11 @@ app = FastAPI(title="API de Recommandation de Films")
 ratings_df = None
 recommender = None
 
-@app.on_event("startup")
-def load_system():
-    """
-    Charge les données et initialise le système de recommandation au démarrage de l'application.
-    """
-    global ratings_df, recommender
-    try:
-        print("Chargement des données...")
-        ratings_df = get_ratings_chunk()
-        print("Initialisation du système de recommandation...")
-        recommender = RecommenderChunkSystem(ratings_df)
-        print("Système chargé avec succès.")
-    except Exception as e:
-        print(f"Erreur lors du chargement : {e}")
-        raise RuntimeError("Impossible de charger le système de recommandation.")
+if not ratings_df :
+    ratings_df = get_ratings_chunk()
+    print("Initialisation du système de recommandation...")
+    recommender = RecommenderChunkSystem(ratings_df)
+    print("Système chargé avec succès.")
 
 @app.get("/movie/{movie_id}")
 def get_movie_by_id(movie_id: int):
@@ -58,7 +40,7 @@ def recommend_movies(user_id: int, top_n: int = 10):
     """
     try:
         all_movie_ids = get_all_movies()
-        user_seen = get_ratings_user(user_id)['film_id'].tolist()
+        user_seen = get_ratings(user_id)['film_id'].tolist()
         unseen_movies = [m for m in all_movie_ids if m not in user_seen]
 
         if not unseen_movies:

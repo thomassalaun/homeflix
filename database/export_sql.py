@@ -13,12 +13,6 @@ def export(database: str, export_dir: str = "/data/export"):
         os.makedirs(export_dir, exist_ok=True)
 
     # Connexion à la base de données et exécution de l'export
-    try:
-        con = duckdb.connect(database)
-        con.execute(f"EXPORT DATABASE '{export_dir}' (FORMAT csv, DELIMITER ',');")
-        print(f"Base de données exportée avec succès dans le répertoire : {export_dir}")
-    except Exception as e:
-        print(f"Erreur lors de l'exportation : {e}")
-    finally:
-        # Fermeture de la connexion
-        con.close()
+    con = duckdb.connect(database)
+    con.execute(f"EXPORT DATABASE '{export_dir}' (FORMAT csv, DELIMITER ',');")
+    con.close()

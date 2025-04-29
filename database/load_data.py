@@ -59,7 +59,7 @@ def load_data(db_path: str):
     :param db_path: Chemin de la base de données.
     """
     # Créer une instance SQLAlchemy pour DuckDB
-    engine = create_engine(f"duckdb:///{db_path}")
+    engine = create_engine(f"duckdb://{db_path}")
     conn = engine.connect()
 
     # Créer les tables nécessaires
@@ -83,7 +83,6 @@ def load_data(db_path: str):
     df_ratings.to_sql('ratings', con=conn, if_exists='replace', index=False, chunksize=2000, method='multi')
 
     print("📥 Données chargées avec succès.")
-    conn.close()
 
 
 if __name__ == '__main__':
@@ -93,4 +92,4 @@ if __name__ == '__main__':
     # Créer la base de données, charger les données, et exporter
     create_database(db_path)
     load_data(db_path)
-    export(db_path)
+    #export(db_path)
