@@ -43,15 +43,16 @@ Assurez-vous que Docker soit installé sur votre machine :
    - la base de données DuckDB
    - un sous répertoire nommé **export** contenant le dump de la base de données, les scripts de création et de chargement des tables.
 
-   Sous linux:
    ```bash
       mkdir /tmp/mon_repertoire
       cp data/*.csv /tmp/mon_repertoire
    ```
 4. **Préparation du fichier d'environnement**   
-   Docker va utiliser ce fichier pour interpoler le contenu de la variable MOUNT_MOINT dans le fichier docker-compose.yml .\
-   Créer un fichier demo.env dans le répertoire courant contenant :
-    MOUNT_POINT=/tmp/mon_repertoire
+   Docker va utiliser ce fichier pour interpoler le contenu de la variable MOUNT_POINT dans le fichier docker-compose.yml .\
+   Modifier le fichier demo.env dans le répertoire courant contenant :
+   ```
+   MOUNT_POINT=/tmp/mon_repertoire
+   ```
 
 ---
 
