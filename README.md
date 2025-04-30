@@ -49,7 +49,7 @@ Assurez-vous que Docker soit installé sur votre machine :
    ```
 4. **Préparation du fichier d'environnement**   
    Docker va utiliser ce fichier pour interpoler le contenu de la variable MOUNT_POINT dans le fichier docker-compose.yml .\
-   Modifier le fichier demo.env dans le répertoire courant contenant :
+   Modifier le fichier **demo.env** dans le répertoire courant contenant :
    ```
    MOUNT_POINT=/tmp/mon_repertoire
    ```

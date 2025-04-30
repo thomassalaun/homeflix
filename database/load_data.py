@@ -92,4 +92,4 @@ if __name__ == '__main__':
     # Créer la base de données, charger les données, et exporter
     create_database(db_path)
     load_data(db_path)
-    #export(db_path)
+    export(db_path)

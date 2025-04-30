@@ -74,7 +74,7 @@ with tab3:
     col1, col2 = st.columns(2)
 
     with col1:
-        genre_input = st.text_input("Filtrer par genre (ex: Action, Comedy)")
+        genre_input = st.text_input("Filtrer par genre (ex: 12, 14, 16, 18, 27, 28, 35, 36, 37 ...)")
     with col2:
         year_input = st.number_input("Filtrer par année", min_value=1900, max_value=2025, step=1, value=2025)
 
